@@ -1,0 +1,120 @@
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>modifier commande</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">modifier commande</li>
+            </ol>
+          </div>
+        </div>
+
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <form method="post" action="/editcommande/{{this.noCommande}}" novalidate>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="card card-primary">
+            <div class="card-header">
+              <h3 class="card-title">General</h3>
+
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                  <i class="fas fa-minus"></i>
+                </button>
+              </div>
+            </div>
+            <div class="card-body">
+             <div class="form-group">
+                <label for="status">Status de le commande</label>
+                <select name="status" class="form-control custom-select">
+                  <option selected disabled>Choisir le type</option>
+                  <option value="to buy" {{#if (isEqual "to buy" status)}} selected {{/if}}>to buy</option>
+                  <option value="bought" {{#if (isEqual "bought" status)}} selected {{/if}}>bought</option>
+                  <option value="packed" {{#if (isEqual "packed" status)}} selected {{/if}}>packed</option>
+                  <option value="shipped" {{#if (isEqual "shipped" status)}} selected {{/if}}>shipped</option>
+                  <option value="arrived" {{#if (isEqual "arrived" status)}} selected {{/if}}> arrived</option>
+                   <option value="delivered {{#if (isEqual "delivered" status)}} selected {{/if}}"> delivered</option>
+                    <option value="done" {{#if (isEqual "done" status)}} selected {{/if}}> done</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="date">date de commande</label>
+                <input type="date" name="date" class="form-control" value={{date}}>
+
+              </div>
+              <div class="form-group">
+                <label for="dispatchedDate">date de dispatch</label>
+                <input type="date" name="dispatchedDate" class="form-control" value={{dispatchedDate}}>
+              </div>
+                <div class="form-group">
+                <label for="noParcel">no de colis</label>
+                <input type="text" name="noParcel" class="form-control" value={{noParcel}}>
+              </div>
+              <div class="form-group">
+                <label for="pointsGagne">points Gagnes</label>
+                <input type="number" name="pointsGagne" class="form-control" value={{pointsGagne}}>
+              </div>
+            
+           
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+        </div>
+        <div class="col-md-6">
+          <div class="card card-secondary">
+            <div class="card-header">
+              <h3 class="card-title">Ajouter les articles</h3>
+
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                  <i class="fas fa-minus"></i>
+                </button>
+              </div>
+            </div>
+                     <div class="card-body">
+
+              <div class="form-group">
+                        <label>Selectionner les articles a ajouter</label>
+                        <select name="articles" multiple="" class="form-control">
+                        {{#each articles}}
+
+                        <option value={{this.noArticle}}   {{#each rows}}{{#if (isEqual ../this.noArticle this.noArticle)}} selected {{/if}}{{/each}}
+                          >{{this.designation}} </option>
+
+						            {{/each}}
+
+            
+                        </select>
+                      </div>
+
+      
+                                  </div>
+
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <input type="reset"  value="annuler" class="btn btn-secondary">
+          <input type="submit" value="ajouter commande" class="btn btn-success float-right">
+        </div>
+      </div>
+
+      </form>
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->

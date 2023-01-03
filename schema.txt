@@ -1,0 +1,22 @@
+generate the tables (mysql ) for the following schema while respecting the rules 
+
+client(>noClient,nomClient,adresse,facebook,instagram,email,signupDate,phone)
+membership(>idMembership,nomMembership)
+clientMembership(>#noClient,#idMembership,points,expiryDate)
+commande(>noCommande,date, status, dispashedDate,noParcel,arrivalDate, totalCommande,pointsGagne,#noClient)
+article(>noArticle,designation,qteStock,prixAchat,prixVente,stockStatus)
+commandeArticle(>#noCommande,>#noArticle,qteArticle,prixUnitaire,remarque,articleStatus)
+facture(>noFacture,dateFacture,dateLastUpdate, fraisService,fraisLivraison,remise,depotApaye, totalFacture)
+depot(>noDepot,totalDepot,dateDepot,methodPaiement,#noCommande)
+reglement(>noReg,totalReg,dateReg,methodPaiement,#noFacture)
+
+
+RULES: 
+attributes that have the sign > are primary key
+attributes that have the sign # are foreign key
+there are only 5 types of memeberships : none, silver,gold, platinum,ultimate
+put check constraint on stockStatus to be either : in stock, available, not available, out of stock
+put check constraint on articleStatus to be either : free gift, packed,dispached,arrived,delivered,other
+put check constraint on methodPaiement to be either : cash, virement, points, chequesCadeau
+the noClient needs to be auto generated with the following format : XX-YYY-ZZZZ with XX the number of signup day and YYY is the month he signed up and ZZZZ a randomly generated number
+if noCommande is of format xxxxx-yyy-Czz the noFacture is of format xxxxx-yyy-Fzz 
