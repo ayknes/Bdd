@@ -9,7 +9,7 @@ router.get("/addclient", clientController.form);
 router.post("/addclient", clientController.create);
 router.get("/editclient/:id", clientController.edit);
 router.post("/editclient/:id", clientController.update);
-// router.get("/viewclient/:id", clientController.viewall);
+ //router.get("/viewclient/:id", clientController.viewall);
 // router.get("/:id", clientController.delete);
 
 module.exports = router;

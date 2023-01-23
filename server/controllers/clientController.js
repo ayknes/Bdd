@@ -8,7 +8,7 @@ let connection = mysql.createConnection({
 	password: process.env.DB_PASS,
 	database: process.env.DB_NAME,
 });
-
+//join comptefidelite on client.idCompte = comptefidelite.idCompte join Points on comptefidelite.idCompte = Points.idCompte where expiryDate > now()
 // View Users
 exports.view = (req, res) => {
 	// User the connection
@@ -86,7 +86,7 @@ exports.create = (req, res) => {
 exports.edit = (req, res) => {
 	// User the connection
 	connection.query(
-		"SELECT * FROM client natural join clientmembership WHERE noclient=?",
+		"SELECT * FROM client natural join membership WHERE noclient=?",
 		[req.params.id],
 		(err, rows) => {
 			if (!err) {

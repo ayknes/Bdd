@@ -1,14 +1,14 @@
-
+use BDD;
 CREATE TABLE client (
-  noClient CHAR(11) PRIMARY KEY,
-  nomClient VARCHAR(30) NOT NULL,
-  adresse VARCHAR(50),
-  facebook VARCHAR(20),
-  instagram VARCHAR(20),
-  email VARCHAR(30) NOT NULL,
-  signupDate DATE NOT NULL,
-  phone VARCHAR(20) NOT NULL,
-  CHECK (noClient LIKE '__-___-____')
+    noClient CHAR(11) PRIMARY KEY,
+    nomClient VARCHAR(30) NOT NULL,
+    adresse VARCHAR(50),
+    facebook VARCHAR(20),
+    instagram VARCHAR(20),
+    email VARCHAR(30) NOT NULL,
+    signupDate DATE NOT NULL,
+    phone VARCHAR(20) NOT NULL,
+    CHECK (noClient LIKE '__-___-____')
 );
 
 DELIMITER //
@@ -188,16 +188,16 @@ VALUES
 
 INSERT INTO clientMembership (noClient, idMembership, points, expiryDate)
 VALUES
-  ('30-DEC-0001', 1, 0, NULL),
-  ('30-DEC-0002', 2, 100, '2022-12-31'),
-  ('30-DEC-0003', 3, 200, '2022-12-31'),
-  ('30-DEC-0004', 4, 300, '2022-12-31'),
-  ('30-DEC-0005', 5, 400, '2022-12-31'),
-	('30-DEC-0006', 1, 0, NULL),
-  ('30-DEC-0007', 1, 0, NULL),
-  ('30-DEC-0008', 1, 0, NULL),
-  ('30-DEC-0009', 1, 0, NULL),
-  ('30-DEC-0010', 1, 0, NULL);
+  ('04-JAN-0001', 1, 0, NULL),
+  ('04-JAN-0002', 2, 100, '2022-12-31'),
+  ('04-JAN-0003', 3, 200, '2022-12-31'),
+  ('04-JAN-0004', 4, 300, '2022-12-31'),
+  ('04-JAN-0005', 5, 400, '2022-12-31'),
+	('04-JAN-0006', 1, 0, NULL),
+  ('04-JAN-0007', 1, 0, NULL),
+  ('04-JAN-0008', 1, 0, NULL),
+  ('04-JAN-0009', 1, 0, NULL),
+  ('04-JAN-0010', 1, 0, NULL);
 
 
 
@@ -216,22 +216,24 @@ VALUES
   
 INSERT INTO commande ( date, status, dispatchedDate, noParcel, arrivalDate, totalCommande, pointsGagne, noclient)
 VALUES
-  ('2022-12-30', 'to buy', NULL, NULL, NULL, 0, 10, '30-DEC-0001'),
-  ( '2022-12-30', 'bought', NULL, NULL, NULL, 0, 20, '30-DEC-0002'),
-  ( '2022-12-30', 'packed', NULL, NULL, NULL, 0, 30, '30-DEC-0003'),
-  ( '2022-12-30', 'shipped', '2022-12-31', 'PARCEL-0001', NULL, 0, 40, '30-DEC-0004'),
-  ('2022-12-30', 'arrived', '2022-12-31', 'PARCEL-0002', '2022-12-31', 0, 50, '30-DEC-0005');
+  ('2023-01-04', 'to buy', NULL, NULL, NULL, 0, 10, '04-JAN-0001'),
+  ( '2023-01-04', 'bought', NULL, NULL, NULL, 0, 20, '04-JAN-0002'),
+  ( '2023-01-04', 'packed', NULL, NULL, NULL, 0, 30, '04-JAN-0003'),
+  ( '2023-01-04', 'shipped', '2022-12-31', 'PARCEL-0001', NULL, 0, 40, '04-JAN-0004'),
+  ('2023-01-04', 'arrived', '2022-12-31', 'PARCEL-0002', '2022-12-31', 0, 50, '04-JAN-0005');
 
 INSERT INTO commandeArticle (noCommande, noArticle, qteArticle, prixUnitaire, remarque, articleStatus)
 VALUES
-  ('301222-30b-C004', 'ART-000000001', 1, 15.00, NULL, 'free gift'),
-  ('301222-37f-C001', 'ART-000000002', 2, 25.00, NULL, 'packed'),
-  ('301222-1b3-C002', 'ART-000000003', 3, 35.00, NULL, 'dispatched'),
-  ('301222-715-C003', 'ART-000000004', 4, 45.00, NULL, 'arrived'),
-  ('301222-c5e-C005', 'ART-000000005', 5, 55.00, NULL, 'delivered'),
-  ('301222-c5e-C005', 'ART-000000006', 6, 65.00, NULL, 'other'),
-    ('301222-37f-C001', 'ART-000000003', 2, 25.00, NULL, 'packed');
+  ('040123-44c-C005', 'ART-000000001', 1, 15.00, NULL, 'free gift'),
+  ('040123-604-C004', 'ART-000000002', 2, 25.00, NULL, 'packed'),
+  ('040123-be1-C002', 'ART-000000003', 3, 35.00, NULL, 'dispatched'),
+  ('040123-c69-C003', 'ART-000000004', 4, 45.00, NULL, 'arrived'),
+  ('040123-e34-C001', 'ART-000000005', 5, 55.00, NULL, 'delivered');
     
+    
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'ayknes2001';    
+flush privileges;
+
 
 
 
